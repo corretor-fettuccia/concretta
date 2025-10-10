@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concretta - Em Breve</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .construction-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            overflow: hidden;
+        }
+        
+        .construction-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4d4d4' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.6;
+            z-index: 0;
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px;
+        }
+        
+        .logo {
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .logo .tagline {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .construction-icon {
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .construction-icon .icon {
+            font-size: 5rem;
+            color: #e67e22;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .message {
+            margin-bottom: 30px;
+        }
+        
+        .message h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .message p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .incubation-message {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .incubation-message h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .countdown-item {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            min-width: 80px;
+        }
+        
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+        
+        .contact {
+            margin-top: 30px;
+        }
+        
+        .contact p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-email {
+            font-weight: 600;
+            color: #3498db;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: #3498db;
+            transform: translateY(-3px);
+        }
+        
+        .construction-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .crane {
+            position: absolute;
+            bottom: 0;
+            right: 10%;
+            width: 150px;
+            height: 200px;
+            animation: craneMove 20s infinite linear;
+        }
+        
+        .crane-tower {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 150px;
+            background-color: #7f8c8d;
+        }
+        
+        .crane-arm {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background-color: #7f8c8d;
+        }
+        
+        .crane-hook {
+            position: absolute;
+            top: 35px;
+            left: 80%;
+            width: 15px;
+            height: 20px;
+            background-color: #e74c3c;
+            animation: hookMove 5s infinite ease-in-out;
+        }
+        
+        .brick {
+            position: absolute;
+            bottom: 0;
+            left: 15%;
+            width: 40px;
+            height: 20px;
+            background-color: #e67e22;
+            animation: brickBuild 15s infinite;
+        }
+        
+        .progress-bar {
+            width: 80%;
+            max-width: 500px;
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            margin: 30px auto;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #3498db;
+            width: 65%;
+            border-radius: 5px;
+            animation: progressAnimation 3s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes craneMove {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-20px);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes hookMove {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes brickBuild {
+            0% {
+                transform: translateY(0);
+            }
+            10% {
+                transform: translateY(-20px);
+            }
+            20% {
+                transform: translateY(-40px);
+            }
+            30% {
+                transform: translateY(-60px);
+            }
+            40% {
+                transform: translateY(-80px);
+            }
+            50% {
+                transform: translateY(-100px);
+            }
+            60% {
+                transform: translateY(-80px);
+            }
+            70% {
+                transform: translateY(-60px);
+            }
+            80% {
+                transform: translateY(-40px);
+            }
+            90% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes progressAnimation {
+            0% {
+                width: 65%;
+            }
+            100% {
+                width: 70%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 2.5rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+            
+            .crane {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="construction-page">
+        <div class="construction-elements">
+            <div class="crane">
+                <div class="crane-tower"></div>
+                <div class="crane-arm"></div>
+                <div class="crane-hook"></div>
+            </div>
+            <div class="brick"></div>
+        </div>
+        
+        <div class="content">
+            <div class="logo">
+                <h1>Concretta</h1>
+                <div class="tagline">Inovação em Construção Civil</div>
+            </div>
+            
+            <div class="construction-icon">
+                <div class="icon">🏗️</div>
+            </div>
+            
+            <div class="message">
+                <h2>Em Construção</h2>
+                <p>Estamos preparando algo incrível para revolucionar o setor da construção civil!</p>
+            </div>
+            
+            <div class="incubation-message">
+                <h3>Saindo da Incubação</h3>
+                <p>Após um período de desenvolvimento e incubação, estamos quase prontos para apresentar nossas soluções inovadoras para o mercado da construção civil.</p>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Dias</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Horas</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutos</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Segundos</div>
+                </div>
+            </div>
+            
+            <div class="contact">
+                <p>Para mais informações, entre em contato:</p>
+                <p class="contact-email">contato@concretta.com.br</p>
+                
+                <div class="social-links">
+                    <a href="#" class="social-link">in</a>
+                    <a href="#" class="social-link">f</a>
+                    <a href="#" class="social-link">ig</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Contador regressivo (exemplo - data futura)
+        function updateCountdown() {
+            const targetDate = new Date('2024-12-31T00:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Atualizar a cada segundo
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Chamada inicial
+    </script>
+</body>
+</html>
