@@ -3,448 +3,951 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concretta - Em Breve</title>
+    <title>Concretta - Método Construtivo de Casas de Concreto | Porto Alegre</title>
+    <meta name="description" content="A Concretta revoluciona o mercado imobiliário com casas de concreto construídas em menos de 60 dias. Redução de custos, tempo e desperdício na região metropolitana de Porto Alegre.">
+    <meta name="keywords" content="concretta, casa de concreto, construção rápida, porto alegre, método construtivo, sustentabilidade, construção modular, minha casa minha vida">
+    <meta name="author" content="Concretta">
+    <meta name="robots" content="index, follow">
+    <meta name="geo.region" content="BR-RS">
+    <meta name="geo.placename" content="Porto Alegre">
+    <meta name="geo.position" content="-30.0346;-51.2177">
+    <meta name="ICBM" content="-30.0346, -51.2177">
+    <link rel="icon" href="http://cct1.com.br/pictures/icon.webp" type="image/webp">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://concretta.com.br/">
+    <meta property="og:title" content="Concretta - Método Construtivo de Casas de Concreto">
+    <meta property="og:description" content="A Concretta revoluciona o mercado imobiliário com casas de concreto construídas em menos de 60 dias.">
+    <meta property="og:image" content="http://cct1.com.br/pictures/Imagem-1.jpeg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://concretta.com.br/">
+    <meta property="twitter:title" content="Concretta - Método Construtivo de Casas de Concreto">
+    <meta property="twitter:description" content="A Concretta revoluciona o mercado imobiliário com casas de concreto construídas em menos de 60 dias.">
+    <meta property="twitter:image" content="http://cct1.com.br/pictures/Imagem-1.jpeg">
+    
     <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
         }
         
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
-        .construction-page {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-            overflow: hidden;
-        }
-        
-        .construction-page::before {
-            content: '';
-            position: absolute;
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4d4d4' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.6;
-            z-index: 0;
+            z-index: 1000;
         }
         
-        .content {
-            position: relative;
-            z-index: 1;
-            padding: 40px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 20px;
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
         }
         
         .logo {
-            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
         }
         
         .logo h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: #2c3e50;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: var(--primary);
         }
         
-        .logo .tagline {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-            font-weight: 300;
-            letter-spacing: 1px;
+        nav ul {
+            display: flex;
+            list-style: none;
         }
         
-        .construction-icon {
-            margin: 30px 0;
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
             position: relative;
         }
         
-        .construction-icon .icon {
-            font-size: 5rem;
-            color: #e67e22;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
+        nav ul li a:hover {
+            color: var(--secondary);
         }
         
-        .message {
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('http://cct1.com.br/pictures/Imagem-1.jpeg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            animation: fadeIn 2s ease;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Revolution Section */
+        .revolution {
+            background-color: white;
+        }
+        
+        .revolution-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .revolution-text {
+            flex: 1;
+        }
+        
+        .revolution-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .revolution-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .revolution-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .revolution-image:hover {
+            transform: scale(1.02);
+        }
+        
+        .revolution-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            background-color: var(--light);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Process Section */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .process-step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .process-step h3 {
+            margin: 20px 0 15px;
+            color: var(--primary);
+        }
+        
+        /* Sustainability Section */
+        .sustainability {
+            background-color: var(--light);
+        }
+        
+        .sustainability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .sustainability-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .sustainability-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .sustainability-item h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sustainability-item h3 i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background-color: white;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Financing Section */
+        .financing {
+            background: linear-gradient(rgba(26, 82, 118, 0.9), rgba(26, 82, 118, 0.9)), url('http://cct1.com.br/pictures/Imagem-9.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .financing h2 {
+            margin-bottom: 20px;
+        }
+        
+        .financing p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .contact-details {
             margin-bottom: 30px;
         }
         
-        .message h2 {
-            font-size: 2rem;
-            color: #2c3e50;
+        .contact-detail {
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
         }
         
-        .message p {
-            font-size: 1.1rem;
-            color: #7f8c8d;
-            max-width: 600px;
-            margin: 0 auto;
+        .contact-detail i {
+            margin-right: 15px;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
         }
         
-        .incubation-message {
-            background-color: #f9f9f9;
-            padding: 20px;
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
             border-radius: 10px;
-            margin: 20px 0;
-            border-left: 4px solid #3498db;
+            box-shadow: var(--shadow);
         }
         
-        .incubation-message h3 {
-            color: #3498db;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
+        .form-group {
+            margin-bottom: 20px;
         }
         
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
         }
         
-        .countdown-item {
-            background-color: #2c3e50;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            min-width: 80px;
-        }
-        
-        .countdown-number {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        
-        .countdown-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-        
-        .contact {
-            margin-top: 30px;
-        }
-        
-        .contact p {
-            margin-bottom: 10px;
-        }
-        
-        .contact-email {
-            font-weight: 600;
-            color: #3498db;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background-color: #2c3e50;
-            color: white;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background-color: #3498db;
-            transform: translateY(-3px);
-        }
-        
-        .construction-elements {
-            position: absolute;
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
         }
         
-        .crane {
-            position: absolute;
-            bottom: 0;
-            right: 10%;
-            width: 150px;
-            height: 200px;
-            animation: craneMove 20s infinite linear;
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
         
-        .crane-tower {
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 10px;
-            height: 150px;
-            background-color: #7f8c8d;
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
         }
         
-        .crane-arm {
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 5px;
-            background-color: #7f8c8d;
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 30px;
         }
         
-        .crane-hook {
-            position: absolute;
-            top: 35px;
-            left: 80%;
-            width: 15px;
-            height: 20px;
-            background-color: #e74c3c;
-            animation: hookMove 5s infinite ease-in-out;
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
         }
         
-        .brick {
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
             position: absolute;
-            bottom: 0;
-            left: 15%;
             width: 40px;
-            height: 20px;
-            background-color: #e67e22;
-            animation: brickBuild 15s infinite;
+            height: 2px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
         }
         
-        .progress-bar {
-            width: 80%;
-            max-width: 500px;
-            height: 10px;
-            background-color: #ecf0f1;
-            border-radius: 5px;
-            margin: 30px auto;
-            overflow: hidden;
+        .footer-column ul {
+            list-style: none;
         }
         
-        .progress {
-            height: 100%;
-            background-color: #3498db;
-            width: 65%;
-            border-radius: 5px;
-            animation: progressAnimation 3s infinite alternate;
+        .footer-column ul li {
+            margin-bottom: 10px;
         }
         
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-            100% {
-                transform: scale(1);
-            }
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
         }
         
-        @keyframes craneMove {
-            0% {
-                transform: translateX(0);
-            }
-            50% {
-                transform: translateX(-20px);
-            }
-            100% {
-                transform: translateX(0);
-            }
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
         }
         
-        @keyframes hookMove {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #bbb;
         }
         
-        @keyframes brickBuild {
-            0% {
-                transform: translateY(0);
-            }
-            10% {
-                transform: translateY(-20px);
-            }
-            20% {
-                transform: translateY(-40px);
-            }
-            30% {
-                transform: translateY(-60px);
-            }
-            40% {
-                transform: translateY(-80px);
-            }
-            50% {
-                transform: translateY(-100px);
-            }
-            60% {
-                transform: translateY(-80px);
-            }
-            70% {
-                transform: translateY(-60px);
-            }
-            80% {
-                transform: translateY(-40px);
-            }
-            90% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        @keyframes progressAnimation {
-            0% {
-                width: 65%;
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .revolution-content {
+                flex-direction: column;
             }
-            100% {
-                width: 70%;
+            
+            .revolution-text, .revolution-image {
+                flex: none;
+                width: 100%;
             }
         }
         
         @media (max-width: 768px) {
-            .logo h1 {
-                font-size: 2.5rem;
-            }
-            
-            .countdown {
-                flex-wrap: wrap;
-            }
-            
-            .crane {
+            nav ul {
                 display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: var(--shadow);
+                padding: 20px;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="construction-page">
-        <div class="construction-elements">
-            <div class="crane">
-                <div class="crane-tower"></div>
-                <div class="crane-arm"></div>
-                <div class="crane-hook"></div>
-            </div>
-            <div class="brick"></div>
-        </div>
-        
-        <div class="content">
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
             <div class="logo">
-                <h1>Concretta</h1>
-                <div class="tagline">Inovação em Construção Civil</div>
+                <img src="http://cct1.com.br/pictures/logo.webp" alt="Concretta Logo">
+                <h1>CONCRETTA</h1>
             </div>
-            
-            <div class="construction-icon">
-                <div class="icon">🏗️</div>
+            <div class="mobile-menu">☰</div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#revolucao">Revolução</a></li>
+                    <li><a href="#vantagens">Vantagens</a></li>
+                    <li><a href="#processo">Processo</a></li>
+                    <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h2>O conceito de construção nunca mais vai ser o mesmo</h2>
+            <p>Imagine você pular muitas etapas, simplificar o que até então não foi pensado para simplificar... e além de simplificar, reduzir tempo e ganhar na qualidade.</p>
+            <a href="#contato" class="btn">Solicite um Orçamento</a>
+        </div>
+    </section>
+
+    <!-- Revolution Section -->
+    <section class="revolution" id="revolucao">
+        <div class="container">
+            <div class="section-title">
+                <h2>Uma Revolução no Mercado Imobiliário</h2>
             </div>
-            
-            <div class="message">
-                <h2>Em Construção</h2>
-                <p>Estamos preparando algo incrível para revolucionar o setor da construção civil!</p>
-            </div>
-            
-            <div class="incubation-message">
-                <h3>Saindo da Incubação</h3>
-                <p>Após um período de desenvolvimento e incubação, estamos quase prontos para apresentar nossas soluções inovadoras para o mercado da construção civil.</p>
-            </div>
-            
-            <div class="progress-bar">
-                <div class="progress"></div>
-            </div>
-            
-            <div class="countdown">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="days">00</div>
-                    <div class="countdown-label">Dias</div>
+            <div class="revolution-content">
+                <div class="revolution-text">
+                    <h3>Sua casa em menos de 60 dias. Sem piada!</h3>
+                    <p>Estamos falando de casa de concreto que você olha e não diz que é de concreto, com paredes já planejadas para chegar no objetivo final.</p>
+                    <p>Reduzir custo de assentamento do tijolo, chapisco, quebradeira para passar tubulação, reboco, só para então poder chegar na etapa de finalização.</p>
+                    <p>O tempo é precioso demais para desperdiçar, tempo é vida e qualidade de vida precisa ser levado a sério.</p>
+                    <p>A Concretta tem a solução, sua casa pensada para ser sua em um tempo que parece mentira. Mas tão possível quanto você poderia imaginar.</p>
                 </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">00</div>
-                    <div class="countdown-label">Horas</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">00</div>
-                    <div class="countdown-label">Minutos</div>
-                </div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">00</div>
-                    <div class="countdown-label">Segundos</div>
-                </div>
-            </div>
-            
-            <div class="contact" hidden >
-                <p>Para mais informações, entre em contato:</p>
-                <p class="contact-email">contato@concretta.com.br</p>
-                
-                <div class="social-links">
-                    <a href="#" class="social-link">in</a>
-                    <a href="#" class="social-link">f</a>
-                    <a href="#" class="social-link">ig</a>
+                <div class="revolution-image">
+                    <img src="http://cct1.com.br/pictures/Imagem-2.png" alt="Casa de concreto moderna">
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="vantagens">
+        <div class="container">
+            <div class="section-title">
+                <h2>Vantagens do Nosso Método</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">⏱️</div>
+                    <h3>Construção Rápida</h3>
+                    <p>Sua casa pronta em menos de 60 dias, sem atrasos e com qualidade garantida.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Redução de Custos</h3>
+                    <p>Eliminação de etapas desnecessárias e redução de desperdício de materiais.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🌱</div>
+                    <h3>Sustentabilidade</h3>
+                    <p>Até 90% menos resíduos e 80% menos consumo de água comparado à alvenaria tradicional.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">🛠️</div>
+                    <h3>Baixa Manutenção</h3>
+                    <p>Risco quase zero de gerar manutenção, com processos práticos e eficientes quando necessário.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="processo">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nosso Processo Construtivo</h2>
+            </div>
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Projeto e Fundação</h3>
+                    <p>Projeto arquitetônico personalizado e fundação em radier, com sapata rasas, calculada para sua casa.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <h3>Paredes em Concreto</h3>
+                    <p>Paredes construídas com concreto usinado de alta resistência (25 Mpa) usando formas de alumínio reutilizáveis.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <h3>Instalações</h3>
+                    <p>Sistema elétrico e hidráulico interno já integrado às paredes durante a construção.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="step-number">4</div>
+                    <h3>Acabamentos</h3>
+                    <p>Aberturas em alumínio, internas em MDF e gesso liso para um acabamento impecável.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sustainability Section -->
+    <section class="sustainability" id="sustentabilidade">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sustentabilidade em Cada Detalhe</h2>
+            </div>
+            <div class="sustainability-grid">
+                <div class="sustainability-item fade-in">
+                    <h3><i>♻️</i> Materiais Eco-friendly</h3>
+                    <p>Selecionamos materiais certificados e sustentáveis, reduzindo o impacto ambiental desde a fabricação.</p>
+                </div>
+                <div class="sustainability-item fade-in">
+                    <h3><i>📉</i> Baixo Desperdício</h3>
+                    <p>Processo construtivo que gera até 90% menos resíduos que construções convencionais.</p>
+                </div>
+                <div class="sustainability-item fade-in">
+                    <h3><i>💧</i> Eficiência Hídrica</h3>
+                    <p>Nosso sistema construtivo utiliza o mínimo de água, reduzindo o consumo em até 80%, comparado à alvenaria tradicional.</p>
+                </div>
+                <div class="sustainability-item fade-in">
+                    <h3><i>🔧</i> Manutenção Eficiente</h3>
+                    <p>Este método construtivo tem risco quase zero de gerar manutenção, contudo, caso seja necessário, é prático, limpo e 100% eficiente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="galeria">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Projetos</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="http://cct1.com.br/pictures/Imagem-3.jpeg" alt="Projeto Concretta 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="http://cct1.com.br/pictures/Imagem-4.jpg" alt="Projeto Concretta 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="http://cct1.com.br/pictures/Imagem-6.png" alt="Projeto Concretta 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="http://cct1.com.br/pictures/Imagem-7.png" alt="Projeto Concretta 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="http://cct1.com.br/pictures/Imagem-8.jpg" alt="Projeto Concretta 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="http://cct1.com.br/pictures/Imagem-9.jpg" alt="Projeto Concretta 6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financing Section -->
+    <section class="financing">
+        <div class="container">
+            <h2>Financiamento Facilitado</h2>
+            <p>Possuímos expertise em construção financiada, incluindo programas como Minha Casa Minha Vida. Realize o sonho da casa própria com prestações baixíssimas!</p>
+            <a href="#contato" class="btn">Saiba Mais</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <i>📍</i>
+                            <p>AV GETULIO VARGAS, 811, BERTO CIRIO<br>Porto Alegre - RS</p>
+                        </div>
+                        <div class="contact-detail">
+                            <i>📧</i>
+                            <p>CONCRETTAARTEFATOSDECONCRETOEC@GMAIL.COM</p>
+                        </div>
+                        <div class="contact-detail">
+                            <i>📞</i>
+                            <p>51 98931-2555</p>
+                        </div>
+                    </div>
+                    <h3>Horário de Atendimento</h3>
+                    <p>Segunda a Sexta: 8h às 18h<br>Sábado: 8h às 12h</p>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Concretta</h3>
+                    <p>Revolucionando o mercado imobiliário com casas de concreto construídas em menos de 60 dias. Redução de custos, tempo e desperdício.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Início</a></li>
+                        <li><a href="#revolucao">Revolução</a></li>
+                        <li><a href="#vantagens">Vantagens</a></li>
+                        <li><a href="#processo">Processo</a></li>
+                        <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Serviços</h3>
+                    <ul>
+                        <li><a href="#">Casas Modulares</a></li>
+                        <li><a href="#">Projetos Personalizados</a></li>
+                        <li><a href="#">Consultoria</a></li>
+                        <li><a href="#">Financiamento</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <ul>
+                        <li>AV GETULIO VARGAS, 811</li>
+                        <li>BERTO CIRIO, Porto Alegre - RS</li>
+                        <li>51 98931-2555</li>
+                        <li>CONCRETTAARTEFATOSDECONCRETOEC@GMAIL.COM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Concretta - KSM Artefatos de Concreto e Construções LTDA. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Contador regressivo (exemplo - data futura)
-        function updateCountdown() {
-            const targetDate = new Date('2024-12-31T00:00:00').getTime();
-            const now = new Date().getTime();
-            const timeLeft = targetDate - now;
-            
-            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('show');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('nav ul').classList.remove('show');
+                }
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado pelo seu interesse! Entraremos em contato em breve.');
+            this.reset();
+        });
+
+        // Fade-in Animation on Scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
         
-        // Atualizar a cada segundo
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); // Chamada inicial
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Initial check in case elements are already in view
+        fadeInOnScroll();
     </script>
 </body>
 </html>
