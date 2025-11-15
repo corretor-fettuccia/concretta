@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Empresarial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis CSS */
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d3748;
+            --accent-color: #3182ce;
+            --light-color: #f7fafc;
+            --dark-color: #2d3748;
+            --text-color: #4a5568;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset e estilos base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            max-width: 200px;
+        }
+
+        .nav-menu {
+            display: flex;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+
+        .hero-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.8) 0%, rgba(45, 55, 72, 0.8) 100%);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            color: var(--white);
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Sobre Section */
+        .sobre-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .sobre-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .sobre-text p {
+            margin-bottom: 15px;
+        }
+
+        .sobre-values {
+            margin-top: 30px;
+        }
+
+        .value-item {
+            margin-bottom: 20px;
+        }
+
+        .value-item h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .sobre-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .sobre-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Produtos Section */
+        .produtos-filters {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: var(--light-color);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .produto-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .produto-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .produto-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .produto-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .produto-card:hover .produto-image img {
+            transform: scale(1.1);
+        }
+
+        .produto-info {
+            padding: 20px;
+        }
+
+        .produto-info h3 {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .produto-info p {
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .produto-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        /* Carrossel */
+        .carrossel-container {
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .carrossel {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 20px;
+        }
+
+        .carrossel-item {
+            flex: 0 0 calc(33.333% - 14px);
+            min-width: 0;
+        }
+
+        .carrossel-btn {
+            position: absolute;
+            top: 20%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .carrossel-btn:hover {
+            background-color: var(--white);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carrossel-btn.prev {
+            left: 10px;
+        }
+
+        .carrossel-btn.next {
+            right: 10px;
+        }
+
+        .carrossel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .carrossel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carrossel-dot.active {
+            background-color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        /* Depoimentos Section */
+        .depoimento-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .depoimento-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            flex-grow: 1;
+        }
+
+        .depoimento-text::before,
+        .depoimento-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+            position: absolute;
+        }
+
+        .depoimento-text::before {
+            top: -15px;
+            left: -10px;
+        }
+
+        .depoimento-text::after {
+            bottom: -40px;
+            right: -10px;
+        }
+
+        .depoimento-author {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .author-info h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        /* Contato Section */
+        .contato-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contato-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .contato-details {
+            margin-bottom: 30px;
+        }
+
+        .contato-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .contato-icon {
+            margin-right: 15px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--ancient-color);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+
+        .contato-form {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: gray;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Loading */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(0, 0, 0, 0.1);
+            border-left-color: var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Mensagem de erro */
+        .error-message {
+            background-color: #fed7d7;
+            color: #c53030;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        /* Modal moderno para produto - PROPORÇÃO 9:4 FUNCIONAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 1200px;
+            aspect-ratio: 9/4;
+            height:70%;
+            max-height: 90%;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(30px) scale(0.95);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10px;
+            border-bottom: 1px solid #eee;
+            background: var(--primary-color);
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: white;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+        }
+
+        .modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .modal-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            gap: 20px;
+            background: white;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* Botões de ação do produto */
+        .produto-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .produto-actions .btn {
+            width: 100%;
+            margin: 0;
+        }
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .sobre-content,
+            .contato-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .carrossel-item {
+                flex: 0 0 calc(50% - 10px);
+            }
+
+            .modal-container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: var(--transition);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 0 0 30px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .carrossel-item {
+                flex: 0 0 100%;
+            }
+
+            .carrossel-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .produto-actions {
+                flex-direction: column;
+            }
+
+            .modal-header {
+                padding: 15px 20px;
+            }
+
+            .modal-title {
+                font-size: 1.3rem;
+            }
+
+            .modal-container {
+                aspect-ratio: unset;
+                height: 70vh;
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .produtos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .carrossel-btn {
+                display: none;
+            }
+
+            .modal-container {
+                width: 100%;
+                height: 100%;
+                max-height: 100vh;
+                border-radius: 0;
+                margin: 0;
+            }
+
+            .modal-overlay {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img id="logo-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMjAwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iNTAiIGZpbGw9IiMxYTM2NWQiLz48dGV4dCB4PSIxMCIgeT0iMzAiIGZpbGw9IiNmZmZmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCI+TG9nbyBFbXByZXNhPC90ZXh0Pjwvc3ZnPg==" alt="Logo">
+            </div>
+            <div class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background" id="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 id="hero-titulo">Bem-vindo à Nossa Empresa</h1>
+                <p id="hero-subtitulo">Soluções inovadoras para o seu negócio</p>
+                <div class="hero-buttons">
+                    <a href="#produtos" class="btn">Conheça Nossos Produtos</a>
+                    <a href="#contato" class="btn btn-secondary" style="border-color: white; color: white;">Entre em Contato</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Section -->
+    <section class="section" id="sobre">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nós</h2>
+                <p>Conheça nossa história, missão, visão e valores</p>
+            </div>
+            <div class="sobre-content">
+                <div class="sobre-text">
+                    <h3>Nossa História</h3>
+                    <p id="sobre-historia">Carregando história da empresa...</p>
+                    
+                    <div class="sobre-values">
+                        <div class="value-item">
+                            <h4>Missão</h4>
+                            <p id="sobre-missao">Carregando missão...</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Visão</h4>
+                            <p id="sobre-visao">Carregando visão...</p>
+                        </div>
+                        <div class="value-item">
+                            <h4>Valores</h4>
+                            <p id="sobre-valores">Carregando valores...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sobre-image">
+                    <div style="width:100%;height:400px;background:var(--light-color);display:flex;align-items:center;justify-content:center;color:var(--text-color);border-radius:8px;">
+                        <i class="fas fa-building" style="font-size:3rem;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos Section -->
+    <section class="section" id="produtos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Produtos</h2>
+                <p>Conheça nossa linha completa de produtos e serviços</p>
+            </div>
+            
+            <!-- Produtos em Destaque - Carrossel -->
+            <div class="section-title" style="margin-bottom: 30px;">
+                <h3 style="font-size: 1.8rem;">Produtos em Destaque</h3>
+            </div>
+            <div class="carrossel-container" id="destaque-carrossel">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Carregando produtos em destaque...</p>
+                </div>
+            </div>
+            
+            <!-- Catálogo de Produtos -->
+            <div class="section-title" style="margin-top: 80px; margin-bottom: 30px;">
+                <h3 style="font-size: 1.8rem;">Catálogo Completo</h3>
+            </div>
+            <div class="produtos-filters" id="produtos-filters">
+                <!-- Filtros serão gerados dinamicamente -->
+            </div>
+            <div class="produtos-grid" id="produtos-grid">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Carregando produtos...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos Section -->
+    <section class="section" id="depoimentos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Depoimentos</h2>
+                <p>O que nossos clientes dizem sobre nós</p>
+            </div>
+            <div class="carrossel-container" id="depoimentos-carrossel">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Carregando depoimentos...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato Section -->
+    <section class="section" id="contato">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Estamos à disposição para esclarecer suas dúvidas</p>
+            </div>
+            <div class="contato-container">
+                <div class="contato-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contato-details">
+                        <div class="contato-item">
+                            <div class="contato-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Endereço</h4>
+                                <p id="contato-endereco">A carregar...</p>
+                            </div>
+                        </div>
+                        <div class="contato-item">
+                            <div class="contato-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Telefone</h4>
+                                <p id="contato-telefone">A carregar...</p>
+                            </div>
+                        </div>
+                        <div class="contato-item">
+                            <div class="contato-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p id="contato-email">A carregar...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links" id="social-links">
+                        <!-- Links sociais serão gerados dinamicamente -->
+                    </div>
+                </div>
+                <div class="contato-form">
+                    <form id="form-contato">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo *</label>
+                            <input type="text" id="nome" name="nome" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem *</label>
+                            <textarea id="mensagem" name="mensagem" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3 id="footer-nome-empresa">Nome da Empresa</h3>
+                    <p id="footer-descricao">Soluções de qualidade para seu negócio</p>
+                    <div class="social-links" id="footer-social-links">
+                        <!-- Links sociais serão gerados dinamicamente -->
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#produtos">Produtos</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contato</h3>
+                    <div class="contato-item">
+                        <div class="contato-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <p id="footer-endereco">A carregar...</p>
+                        </div>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <p id="footer-telefone">A carregar...</p>
+                        </div>
+                    </div>
+                    <div class="contato-item">
+                        <div class="contato-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p id="footer-email">A carregar...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> <span id="footer-empresa">Nome da Empresa</span>. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal moderno para visualização de produto em iframe -->
+    <div id="produto-modal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 class="modal-title">Detalhes do Produto</h2>
+                <button class="modal-close" onclick="fecharModalProduto()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-loading" id="modal-loading">
+                    <div class="spinner"></div>
+                    <p>Carregando produto...</p>
+                </div>
+                <iframe id="modal-iframe" class="modal-iframe" style="display: none;"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configurações
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLQFr9c8uGj8uusv4V8V0-WmDOHRjGYWyZZ8qhYz2qDZxDq31OQfsym60ZF3Sw4IOe/exec';
+        
+        // Variáveis globais
+        let carrosselDestaqueAtual = 0;
+        let carrosselDepoimentosAtual = 0;
+        let todosProdutos = [];
+        let imagens = {};
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurações iniciais
+            const currentYear = new Date().getFullYear();
+            document.getElementById('current-year').textContent = currentYear;
+            
+            // Menu mobile
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                mobileToggle.querySelector('i').classList.toggle('fa-bars');
+                mobileToggle.querySelector('i').classList.toggle('fa-times');
+            });
+            
+            // Fechar menu ao clicar em um link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    mobileToggle.querySelector('i').classList.add('fa-bars');
+                    mobileToggle.querySelector('i').classList.remove('fa-times');
+                });
+            });
+            
+            // Carregar dados
+            carregarDadosSite();
+            
+            // Formulário de contato
+            document.getElementById('form-contato').addEventListener('submit', enviarFormulario);
+            
+            // Fechar modal ao clicar fora ou pressionar ESC
+            document.getElementById('produto-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    fecharModalProduto();
+                }
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    fecharModalProduto();
+                }
+            });
+
+            // Verificar se há produto pré-selecionado na URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const produtoSelecionado = urlParams.get('produto');
+            if (produtoSelecionado && window.location.hash === '#contato') {
+                document.getElementById('mensagem').value = `Gostaria de obter mais informações sobre: ${decodeURIComponent(produtoSelecionado)}`;
+            }
+        });
+
+        async function carregarDadosSite() {
+            try {
+                console.log('Iniciando carregamento de dados...');
+                
+                const response = await fetch(`${SCRIPT_URL}?action=getSiteData`);
+                
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('Dados recebidos:', data);
+                
+                if (data.status === 'success') {
+                    preencherDadosSite(data);
+                } else {
+                    throw new Error(data.message || 'Erro desconhecido');
+                }
+                
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                exibirErro('Erro ao carregar dados do site: ' + error.message);
+                exibirDadosFallback();
+            }
+        }
+
+        function preencherDadosSite(data) {
+            const { config, produtos, sobre, depoimentos, imagens: imagensData } = data;
+            
+            // Armazenar dados globalmente
+            todosProdutos = produtos || [];
+            imagens = imagensData || {};
+            
+            // Preencher configurações
+            if (config.nomeEmpresa) {
+                document.title = config.nomeEmpresa;
+                document.getElementById('footer-nome-empresa').textContent = config.nomeEmpresa;
+                document.getElementById('footer-empresa').textContent = config.nomeEmpresa;
+            }
+            
+            if (config.heroTitulo) {
+                document.getElementById('hero-titulo').textContent = config.heroTitulo;
+            }
+            
+            if (config.heroSubtitulo) {
+                document.getElementById('hero-subtitulo').textContent = config.heroSubtitulo;
+            }
+            
+            // Logo
+            if (imagens && config.logoBase64 && imagens[config.logoBase64]) {
+                document.getElementById('logo-img').src = imagens[config.logoBase64];
+            }
+            
+            // Hero Background
+            if (imagens && config.heroBackground && imagens[config.heroBackground]) {
+                const heroBackground = document.getElementById('hero-background');
+                heroBackground.style.backgroundImage = `url(${imagens[config.heroBackground]})`;
+            }
+            
+            // Contato
+            if (config.endereco) {
+                document.getElementById('contato-endereco').textContent = config.endereco;
+                document.getElementById('footer-endereco').textContent = config.endereco;
+            }
+            
+            if (config.telefone) {
+                document.getElementById('contato-telefone').textContent = config.telefone;
+                document.getElementById('footer-telefone').textContent = config.telefone;
+            }
+            
+            if (config.email) {
+                document.getElementById('contato-email').textContent = config.email;
+                document.getElementById('footer-email').textContent = config.email;
+            }
+            
+            // Sobre
+            if (sobre.historia) {
+                document.getElementById('sobre-historia').textContent = sobre.historia;
+            }
+            
+            if (sobre.missao) {
+                document.getElementById('sobre-missao').textContent = sobre.missao;
+            }
+            
+            if (sobre.visao) {
+                document.getElementById('sobre-visao').textContent = sobre.visao;
+            }
+            
+            if (sobre.valores) {
+                document.getElementById('sobre-valores').textContent = sobre.valores;
+            }
+            
+            // Produtos
+            preencherProdutos(produtos, imagens);
+            
+            // Depoimentos
+            preencherDepoimentos(depoimentos);
+            
+            // Links sociais
+            preencherLinksSociais(config);
+            
+            // Esconder loadings
+            document.querySelectorAll('.loading').forEach(loading => {
+                loading.style.display = 'none';
+            });
+        }
+
+        function preencherProdutos(produtos, imagens) {
+            const containerGrid = document.getElementById('produtos-grid');
+            const containerDestaque = document.getElementById('destaque-carrossel');
+            
+            if (!produtos || produtos.length === 0) {
+                containerGrid.innerHTML = '<p style="text-align:center;padding:40px;grid-column:1/-1;">Nenhum produto cadastrado no momento.</p>';
+                containerDestaque.innerHTML = '<p style="text-align:center;padding:40px;">Nenhum produto em destaque no momento.</p>';
+                return;
+            }
+            
+            // Separar produtos em destaque
+            const produtosDestaque = produtos.filter(produto => produto.Destaque === 'Sim');
+            const outrosProdutos = produtos.filter(produto => produto.Destaque !== 'Sim');
+            
+            // Criar carrossel de produtos em destaque
+            if (produtosDestaque.length > 0) {
+                criarCarrosselDestaque(produtosDestaque, imagens, containerDestaque);
+            } else {
+                containerDestaque.innerHTML = '<p style="text-align:center;padding:40px;">Nenhum produto em destaque no momento.</p>';
+            }
+            
+            // Criar grid de produtos
+            if (outrosProdutos.length > 0) {
+                criarGridProdutos(outrosProdutos, imagens, containerGrid);
+            } else {
+                containerGrid.innerHTML = '<p style="text-align:center;padding:40px;grid-column:1/-1;">Nenhum produto adicional disponível.</p>';
+            }
+        }
+
+        function criarCarrosselDestaque(produtos, imagens, container) {
+            let html = `
+                <div class="carrossel" id="carrossel-destaque">
+            `;
+            
+            produtos.forEach(produto => {
+                const imagemSrc = imagens && produto.ImagemBase64 && imagens[produto.ImagemBase64] 
+                    ? imagens[produto.ImagemBase64]
+                    : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNmMWY1ZjkiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzljYTNkZCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5Qcm9kdXRvPC90ZXh0Pjwvc3ZnPg==';
+                
+                html += `
+                    <div class="carrossel-item">
+                        <div class="produto-card">
+                            <div class="produto-image">
+                                <img src="${imagemSrc}" alt="${produto.Nome || 'Produto'}">
+                            </div>
+                            <div class="produto-info">
+                                <h3>${produto.Nome || 'Produto'}</h3>
+                                <p>${produto.Descricao ? produto.Descricao.substring(0, 100) + '...' : 'Descrição do produto'}</p>
+                                ${produto.Preco ? `<div class="produto-price">${produto.Preco}</div>` : ''}
+                                <div class="produto-actions">
+                                    <button class="btn" onclick="abrirModalProduto('${produto.ID || produto.Nome}')">Ver Detalhes</button>
+                                    <button class="btn" style="background: #718096;" onclick="solicitarInformacoes('${produto.Nome || 'Produto'}')">Solicitar Informações</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                </div>
+                <button class="carrossel-btn prev" onclick="moverCarrossel('destaque', -1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carrossel-btn next" onclick="moverCarrossel('destaque', 1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carrossel-dots" id="dots-destaque">
+            `;
+            
+            // Adicionar dots
+            for (let i = 0; i < produtos.length; i++) {
+                html += `<div class="carrossel-dot ${i === 0 ? 'active' : ''}" onclick="moverCarrosselPara('destaque', ${i})"></div>`;
+            }
+            
+            html += `</div>`;
+            
+            container.innerHTML = html;
+        }
+
+        function criarGridProdutos(produtos, imagens, container) {
+            // Obter categorias únicas
+            const categorias = [...new Set(produtos.map(produto => produto.Categoria))];
+            
+            // Criar filtros
+            const filtrosContainer = document.getElementById('produtos-filters');
+            let filtrosHtml = '';
+            
+            if (categorias.length > 1) {
+                filtrosHtml = `
+                    <button class="filter-btn active" data-filter="todos">Todos</button>
+                `;
+                
+                categorias.forEach(categoria => {
+                    filtrosHtml += `
+                        <button class="filter-btn" data-filter="${categoria}">${categoria}</button>
+                    `;
+                });
+                
+                filtrosContainer.innerHTML = filtrosHtml;
+                
+                // Adicionar event listeners aos filtros
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        const filtro = this.dataset.filter;
+                        
+                        document.querySelectorAll('.produto-card').forEach(card => {
+                            if (filtro === 'todos' || card.dataset.categoria === filtro) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            } else {
+                filtrosContainer.innerHTML = '';
+            }
+            
+            // Criar grid de produtos
+            let gridHtml = '';
+            
+            produtos.forEach(produto => {
+                const imagemSrc = imagens && produto.ImagemBase64 && imagens[produto.ImagemBase64] 
+                    ? imagens[produto.ImagemBase64]
+                    : 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDMwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNmMWY1ZjkiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzljYTNkZCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0Ij5Qcm9kdXRvPC90ZXh0Pjwvc3ZnPg==';
+                
+                gridHtml += `
+                    <div class="produto-card" data-categoria="${produto.Categoria || 'Geral'}">
+                        <div class="produto-image">
+                            <img src="${imagemSrc}" alt="${produto.Nome || 'Produto'}">
+                        </div>
+                        <div class="produto-info">
+                            <h3>${produto.Nome || 'Produto'}</h3>
+                            <p>${produto.Descricao ? produto.Descricao.substring(0, 100) + '...' : 'Descrição do produto'}</p>
+                            ${produto.Preco ? `<div class="produto-price">${produto.Preco}</div>` : ''}
+                            <div class="produto-actions">
+                                <button class="btn" onclick="abrirModalProduto('${produto.ID || produto.Nome}')">Ver Detalhes</button>
+                                <button class="btn" style="background: #718096;" onclick="solicitarInformacoes('${produto.Nome || 'Produto'}')">Solicitar Informações</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = gridHtml;
+        }
+
+        function preencherDepoimentos(depoimentos) {
+            const container = document.getElementById('depoimentos-carrossel');
+            
+            if (!depoimentos || depoimentos.length === 0) {
+                container.innerHTML = '<p style="text-align:center;padding:40px;">Nenhum depoimento disponível no momento.</p>';
+                return;
+            }
+            
+            let html = `
+                <div class="carrossel" id="carrossel-depoimentos">
+            `;
+            
+            depoimentos.forEach(depoimento => {
+                html += `
+                    <div class="carrossel-item">
+                        <div class="depoimento-card">
+                            <div class="depoimento-text">
+                                ${depoimento.Depoimento || 'Depoimento do cliente'}
+                            </div>
+                            <div class="depoimento-author">
+                                <div class="author-info">
+                                    <h4>${depoimento.Nome || 'Cliente'}</h4>
+                                    <p>${depoimento.Projeto || ''} ${depoimento.Data ? `- ${formatarData(depoimento.Data)}` : ''}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                </div>
+                <button class="carrossel-btn prev" onclick="moverCarrossel('depoimentos', -1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carrossel-btn next" onclick="moverCarrossel('depoimentos', 1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="carrossel-dots" id="dots-depoimentos">
+            `;
+            
+            for (let i = 0; i < depoimentos.length; i++) {
+                html += `<div class="carrossel-dot ${i === 0 ? 'active' : ''}" onclick="moverCarrosselPara('depoimentos', ${i})"></div>`;
+            }
+            
+            html += `</div>`;
+            
+            container.innerHTML = html;
+        }
+
+        function preencherLinksSociais(config) {
+            const socialLinks = document.getElementById('social-links');
+            const footerSocialLinks = document.getElementById('footer-social-links');
+            
+            socialLinks.innerHTML = '';
+            footerSocialLinks.innerHTML = '';
+            
+            const redesSociais = [
+                { nome: 'facebook', icon: 'fab fa-facebook-f', url: config.facebook },
+                { nome: 'instagram', icon: 'fab fa-instagram', url: config.instagram },
+                { nome: 'linkedin', icon: 'fab fa-linkedin-in', url: config.linkedin }
+            ];
+            
+            redesSociais.forEach(rede => {
+                if (rede.url) {
+                    const link = document.createElement('a');
+                    link.className = 'social-link';
+                    link.href = rede.url;
+                    link.target = '_blank';
+                    link.innerHTML = `<i class="${rede.icon}"></i>`;
+                    
+                    socialLinks.appendChild(link.cloneNode(true));
+                    footerSocialLinks.appendChild(link);
+                }
+            });
+            
+            if (socialLinks.children.length === 0) {
+                const placeholder = document.createElement('p');
+                placeholder.textContent = 'Links em breve';
+                placeholder.style.color = 'var(--text-color)';
+                socialLinks.appendChild(placeholder);
+                footerSocialLinks.appendChild(placeholder.cloneNode(true));
+            }
+        }
+
+        // FUNÇÕES DO CARROSSEL
+        function moverCarrossel(tipo, direcao) {
+            const carrossel = document.getElementById(`carrossel-${tipo}`);
+            const items = carrossel.querySelectorAll('.carrossel-item');
+            
+            let indiceAtual;
+            
+            if (tipo === 'destaque') {
+                carrosselDestaqueAtual += direcao;
+                if (carrosselDestaqueAtual < 0) carrosselDestaqueAtual = items.length - 1;
+                if (carrosselDestaqueAtual >= items.length) carrosselDestaqueAtual = 0;
+                indiceAtual = carrosselDestaqueAtual;
+            } else {
+                carrosselDepoimentosAtual += direcao;
+                if (carrosselDepoimentosAtual < 0) carrosselDepoimentosAtual = items.length - 1;
+                if (carrosselDepoimentosAtual >= items.length) carrosselDepoimentosAtual = 0;
+                indiceAtual = carrosselDepoimentosAtual;
+            }
+            
+            const itemWidth = items[0].offsetWidth + 20;
+            const translateX = -indiceAtual * itemWidth;
+            
+            carrossel.style.transform = `translateX(${translateX}px)`;
+            
+            atualizarDots(tipo, indiceAtual);
+        }
+
+        function moverCarrosselPara(tipo, indice) {
+            const carrossel = document.getElementById(`carrossel-${tipo}`);
+            const items = carrossel.querySelectorAll('.carrossel-item');
+            
+            if (tipo === 'destaque') {
+                carrosselDestaqueAtual = indice;
+            } else {
+                carrosselDepoimentosAtual = indice;
+            }
+            
+            const itemWidth = items[0].offsetWidth + 20;
+            const translateX = -indice * itemWidth;
+            
+            carrossel.style.transform = `translateX(${translateX}px)`;
+            
+            atualizarDots(tipo, indice);
+        }
+
+        function atualizarDots(tipo, indiceAtivo) {
+            const dots = document.getElementById(`dots-${tipo}`);
+            const allDots = dots.querySelectorAll('.carrossel-dot');
+            
+            allDots.forEach((dot, index) => {
+                if (index === indiceAtivo) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        // FUNÇÕES DO MODAL DE PRODUTO - CORRETAS
+        function abrirModalProduto(produtoId) {
+            const produto = todosProdutos.find(p => 
+                (p.ID && p.ID.toString() === produtoId.toString()) || 
+                p.Nome === produtoId
+            );
+            
+            if (produto) {
+                const modal = document.getElementById('produto-modal');
+                const modalIframe = document.getElementById('modal-iframe');
+                const modalLoading = document.getElementById('modal-loading');
+                
+                modalLoading.style.display = 'flex';
+                modalIframe.style.display = 'none';
+                
+                const produtoIdParam = produto.ID || encodeURIComponent(produto.Nome);
+                modalIframe.src = `produto.html?id=${produtoIdParam}`;
+                
+                modalIframe.onload = function() {
+                    modalLoading.style.display = 'none';
+                    modalIframe.style.display = 'block';
+                };
+                
+                modalIframe.onclick = function(e) {
+                    e.stopPropagation();
+                };
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                alert('Produto não encontrado!');
+            }
+        }
+
+        function fecharModalProduto() {
+            const modal = document.getElementById('produto-modal');
+            const modalIframe = document.getElementById('modal-iframe');
+            const modalLoading = document.getElementById('modal-loading');
+            
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            setTimeout(() => {
+                modalIframe.src = 'about:blank';
+                modalLoading.style.display = 'flex';
+                modalIframe.style.display = 'none';
+            }, 300);
+        }
+
+        function formatarData(dataString) {
+            if (!dataString) return '';
+            
+            const data = new Date(dataString);
+            if (isNaN(data.getTime())) return dataString;
+            
+            return data.toLocaleDateString('pt-BR');
+        }
+
+        function exibirErro(mensagem) {
+            const erroDiv = document.createElement('div');
+            erroDiv.className = 'error-message';
+            erroDiv.innerHTML = `
+                <h3><i class="fas fa-exclamation-triangle"></i> Erro</h3>
+                <p>${mensagem}</p>
+                <button onclick="location.reload()" class="btn" style="margin-top:10px;">Tentar Novamente</button>
+            `;
+            
+            document.querySelector('main').prepend(erroDiv);
+        }
+
+        function exibirDadosFallback() {
+            const produtosFallback = [
+                {
+                    ID: '1',
+                    Nome: 'Produto Exemplo 1',
+                    Descricao: 'Descrição completa do produto exemplo 1 com todas as características e benefícios.',
+                    Preco: 'R$ 100,00',
+                    Destaque: 'Sim',
+                    Categoria: 'Categoria A',
+                    Especificacoes: 'Material: Aço Inox\nDimensões: 10x20x15cm\nPeso: 2kg'
+                },
+                {
+                    ID: '2',
+                    Nome: 'Produto Exemplo 2',
+                    Descricao: 'Descrição completa do produto exemplo 2 com todas as características e benefícios.', 
+                    Preco: 'R$ 150,00',
+                    Destaque: 'Sim',
+                    Categoria: 'Categoria B',
+                    Especificacoes: 'Material: Alumínio\nDimensões: 15x25x20cm\nPeso: 1.5kg'
+                }
+            ];
+            
+            const depoimentosFallback = [
+                {
+                    Nome: 'Cliente Satisfeito',
+                    Depoimento: 'Excelente serviço e atendimento! Recomendo a todos.',
+                    Projeto: 'Projeto Exemplo',
+                    Data: '2023-01-15'
+                }
+            ];
+            
+            preencherProdutos(produtosFallback, {});
+            preencherDepoimentos(depoimentosFallback);
+            
+            document.querySelectorAll('.loading').forEach(loading => {
+                loading.style.display = 'none';
+            });
+        }
+
+        async function enviarFormulario(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const formData = new FormData(form);
+            const dados = {
+                nome: formData.get('nome'),
+                email: formData.get('email'),
+                telefone: formData.get('telefone'),
+                mensagem: formData.get('mensagem')
+            };
+            
+            const btn = form.querySelector('button[type="submit"]');
+            const textoOriginal = btn.textContent;
+            
+            btn.textContent = 'Enviando...';
+            btn.disabled = true;
+            
+            try {
+                const response = await fetch(`${SCRIPT_URL}?action=processarFormularioContato`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dados)
+                });
+                
+                const resultado = await response.json();
+                
+                if (resultado.status === 'success') {
+                    alert('Mensagem enviada com sucesso!');
+                    form.reset();
+                } else {
+                    alert('Erro ao enviar mensagem: ' + resultado.message);
+                }
+            } catch (error) {
+                alert('Erro ao enviar mensagem. Tente novamente.');
+                console.error('Erro:', error);
+            } finally {
+                btn.textContent = textoOriginal;
+                btn.disabled = false;
+            }
+        }
+
+        function solicitarInformacoes(nomeProduto) {
+            document.getElementById('mensagem').value = `Gostaria de obter mais informações sobre: ${nomeProduto}`;
+            document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
+            fecharModalProduto();
+        }
+    </script>
+</body>
+</html>
