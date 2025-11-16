@@ -33,10 +33,10 @@
         }
 
         .produto-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
+            margin-bottom: 30px;
+        }
+
+        .produto-imagem-container {
             margin-bottom: 30px;
         }
 
@@ -45,6 +45,8 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .carousel-main {
@@ -53,6 +55,9 @@
             height: 400px;
             overflow: hidden;
             background: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .carousel-slide {
@@ -66,6 +71,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
 
         .carousel-slide.active {
@@ -75,7 +81,26 @@
         .carousel-slide img {
             max-width: 100%;
             max-height: 100%;
+            width: auto;
+            height: auto;
             object-fit: contain;
+            border-radius: 8px;
+        }
+
+        /* Otimização para diferentes proporções de imagem */
+        .carousel-slide img[data-ratio="portrait"] {
+            max-height: 90%;
+            max-width: 80%;
+        }
+
+        .carousel-slide img[data-ratio="landscape"] {
+            max-width: 90%;
+            max-height: 80%;
+        }
+
+        .carousel-slide img[data-ratio="square"] {
+            max-width: 85%;
+            max-height: 85%;
         }
 
         .carousel-btn {
@@ -131,6 +156,9 @@
             border: 2px solid transparent;
             flex-shrink: 0;
             background: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .thumbnail.active {
@@ -146,6 +174,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        .produto-info {
+            margin-bottom: 30px;
+            text-align: center;
         }
 
         .produto-info h1 {
@@ -166,64 +199,26 @@
             margin-bottom: 20px;
             font-size: 1rem;
             line-height: 1.6;
-        }
-
-        .produto-actions {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 25px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 24px;
-            background: var(--accent-color);
-            color: var(--white);
-            border: none;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .btn:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
-        }
-
-        .btn-whatsapp:hover {
-            background: #128C7E;
-        }
-
-        .btn-secondary {
-            background: #718096;
-        }
-
-        .btn-secondary:hover {
-            background: #4A5568;
+            display: none; /* Desativado */
         }
 
         .produto-especificacoes {
             background: var(--light-color);
             padding: 25px;
             border-radius: 8px;
-            margin: 25px 0;
+            margin: 20px 0;
+            text-align: justify;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .produto-especificacoes h2 {
             color: var(--primary-color);
             margin-bottom: 18px;
             font-size: 1.4rem;
+            text-align: center;
         }
 
         .especificacoes-grid {
@@ -240,6 +235,41 @@
 
         .especificacao-item strong {
             color: var(--primary-color);
+        }
+
+        .descricao-detalhada-container {
+            background: var(--light-color);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: justify;
+            line-height: 1.6;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .descricao-detalhada-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 18px;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .descricao-detalhada-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .descricao-detalhada-text {
+            width: 100%;
+            text-align: justify;
         }
 
         .loading {
@@ -284,21 +314,58 @@
             font-size: 0.95rem;
             font-weight: 600;
             transition: all 0.3s ease;
+            animation: pulse 2s infinite;
         }
 
         .whatsapp-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+            animation: none;
+        }
+
+        .whatsapp-center {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .whatsapp-center .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 30px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.7);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            }
         }
 
         @media (max-width: 968px) {
-            .produto-header {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
             .carousel-main {
                 height: 350px;
+            }
+            .descricao-detalhada-container {
+                min-height: 350px;
             }
         }
 
@@ -315,6 +382,10 @@
                 height: 300px;
             }
             
+            .descricao-detalhada-container {
+                min-height: 300px;
+            }
+            
             .carousel-btn {
                 width: 40px;
                 height: 40px;
@@ -323,15 +394,6 @@
             .thumbnail {
                 width: 60px;
                 height: 60px;
-            }
-            
-            .produto-actions {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
             }
             
             .especificacoes-grid {
@@ -344,9 +406,17 @@
                 height: 250px;
             }
             
+            .descricao-detalhada-container {
+                min-height: 250px;
+            }
+            
             .thumbnail {
                 width: 50px;
                 height: 50px;
+            }
+            
+            .carousel-slide {
+                padding: 15px;
             }
         }
     </style>
@@ -422,9 +492,7 @@
                     <div style="text-align: center; padding: 40px;">
                         <h2>Produto Não Encontrado</h2>
                         <p>${error.message}</p>
-                        <button class="btn" onclick="window.history.back()" style="margin-top: 15px;">
-                            <i class="fas fa-arrow-left"></i> Voltar
-                        </button>
+                        
                     </div>
                 `;
             }
@@ -448,7 +516,9 @@
                     <div class="carousel-container">
                         <div class="carousel-main">
                             <div class="carousel-slide active">
-                                <img src="${imagemSrc}" alt="${produto.Nome}" onerror="this.src='${obterImagemPadrao()}'">
+                                <img src="${imagemSrc}" alt="${produto.Nome}" 
+                                     onerror="this.src='${obterImagemPadrao()}'"
+                                     onload="detectarProporcaoImagem(this)">
                             </div>
                         </div>
                     </div>
@@ -477,6 +547,20 @@
                 `;
             }
 
+            let descricaoDetalhadaHtml = '';
+            if (produto.Desc_Detalhada) {
+                descricaoDetalhadaHtml = `
+                    <div class="descricao-detalhada-container">
+                        <h2>Descrição Detalhada</h2>
+                        <div class="descricao-detalhada-content">
+                            <div class="descricao-detalhada-text">
+                                ${(produto.Desc_Detalhada || '').replace(/\n/g, '<br>')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
             let whatsappButtonHtml = '';
             if (telefoneWhatsApp) {
                 const mensagem = `Olá! Gostaria de mais informações sobre: ${produto.Nome}${produto.Descricao ? ` - ${produto.Descricao.substring(0, 80)}...` : ''}`;
@@ -486,53 +570,37 @@
                 document.getElementById('whatsapp-float').style.display = 'block';
 
                 whatsappButtonHtml = `
-                    <a href="${urlWhatsApp}" class="btn btn-whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i> Solicitar no WhatsApp
-                    </a>
+                    <div class="whatsapp-center">
+                        <a href="${urlWhatsApp}" class="whatsapp-btn" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Solicitar no WhatsApp
+                        </a>
+                    </div>
                 `;
             }
 
             const html = `
                 <div class="produto-header">
-                    <div class="produto-imagem-container">
-                        ${carouselHtml}
-                    </div>
-                    
                     <div class="produto-info">
                         <h1>${produto.Nome || 'Produto'}</h1>
                         ${produto.Preco && produto.Preco !== 'R$ 0,00' && produto.Preco !== '0,00' ? `<div class="produto-preco">${produto.Preco}</div>` : ''}
                         ${produto.Categoria ? `<p style="margin-bottom: 15px;"><strong>Categoria:</strong> ${produto.Categoria}</p>` : ''}
-                        
-                        <div class="produto-descricao">
-                            <strong>Descrição:</strong><br>
-                            ${produto.Descricao || 'Descrição do produto.'}
-                        </div>
-                        
-                        <div class="produto-actions">
-                            ${whatsappButtonHtml}
-                            <button class="btn" onclick="solicitarInformacoes('${produto.Nome}')">
-                                <i class="fas fa-envelope"></i> Solicitar Orçamento
-                            </button>
-                            <button class="btn btn-secondary" onclick="window.history.back()">
-                                <i class="fas fa-arrow-left"></i> Voltar
-                            </button>
-                        </div>
                     </div>
+                    
+                    <div class="produto-imagem-container">
+                        ${carouselHtml}
+                    </div>
+                    
+                    ${especificacoesHtml}
+                    
+                    ${descricaoDetalhadaHtml}
+                    
+                    ${whatsappButtonHtml}
                 </div>
-
-                ${produto.Desc_Detalhada ? `
-                    <div class="produto-especificacoes">
-                        <h2>Descrição Detalhada</h2>
-                        <div style="line-height: 1.6;">${(produto.Desc_Detalhada || '').replace(/\n/g, '<br>')}</div>
-                    </div>
-                ` : ''}
-
-                ${especificacoesHtml}
 
                 ${produto.InformacoesAdicionais ? `
                     <div class="produto-especificacoes">
                         <h2>Informações Adicionais</h2>
-                        <div style="line-height: 1.6;">${(produto.InformacoesAdicionais || '').replace(/\n/g, '<br>')}</div>
+                        <div style="line-height: 1.6; text-align: justify;">${(produto.InformacoesAdicionais || '').replace(/\n/g, '<br>')}</div>
                     </div>
                 ` : ''}
             `;
@@ -585,7 +653,8 @@
                         ${imagens.map((imagem, index) => `
                             <div class="carousel-slide ${index === 0 ? 'active' : ''}" data-index="${index}">
                                 <img src="${imagem}" alt="${nomeProduto} - Imagem ${index + 1}" 
-                                     onerror="this.src='${obterImagemPadrao()}'">
+                                     onerror="this.src='${obterImagemPadrao()}'"
+                                     onload="detectarProporcaoImagem(this)">
                             </div>
                         `).join('')}
                     </div>
@@ -609,6 +678,31 @@
                     ` : ''}
                 </div>
             `;
+        }
+
+        // Nova função para detectar a proporção da imagem e aplicar estilos otimizados
+        function detectarProporcaoImagem(imgElement) {
+            const img = imgElement;
+            const width = img.naturalWidth;
+            const height = img.naturalHeight;
+            const ratio = width / height;
+            
+            // Remover classes anteriores
+            img.removeAttribute('data-ratio');
+            
+            // Classificar a imagem baseado na proporção
+            if (ratio > 1.2) {
+                // Landscape (paisagem)
+                img.setAttribute('data-ratio', 'landscape');
+            } else if (ratio < 0.8) {
+                // Portrait (retrato)
+                img.setAttribute('data-ratio', 'portrait');
+            } else {
+                // Square (quadrada)
+                img.setAttribute('data-ratio', 'square');
+            }
+            
+            console.log('Imagem detectada:', { width, height, ratio, tipo: img.getAttribute('data-ratio') });
         }
 
         function inicializarCarousel() {
@@ -669,10 +763,6 @@
             // Adicionar classe active ao novo slide
             slides[carouselCurrentIndex]?.classList.add('active');
             thumbnails[carouselCurrentIndex]?.classList.add('active');
-        }
-
-        function solicitarInformacoes(nomeProduto) {
-            window.location.href = `index.html#contato?produto=${encodeURIComponent(nomeProduto)}`;
         }
 
         // Navegação por teclado

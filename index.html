@@ -31,6 +31,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--white);
+            overflow-x: hidden;
         }
 
         a {
@@ -50,16 +51,16 @@
         }
 
         .section {
-            padding: 80px 0;
+            padding: 60px 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
             margin-bottom: 15px;
             position: relative;
@@ -113,6 +114,85 @@
         .btn-secondary:hover {
             background-color: var(--accent-color);
             color: var(--white);
+        }
+
+        /* Splash Screen */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .splash-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .splash-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 500px;
+            padding: 0 20px;
+        }
+
+        .splash-logo {
+            display: none;
+            margin-bottom: 30px;
+        }
+
+        .splash-logo img {
+            height: 80px;
+            max-width: 250px;
+            filter: brightness(0) invert(1);
+        }
+
+        .splash-message {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .splash-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .splash-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-left-color: var(--white);
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+        }
+
+        .splash-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Efeito de pulso para a mensagem */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .splash-message {
+            animation: pulse 2s ease-in-out infinite;
         }
 
         /* Header */
@@ -183,7 +263,7 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            height: 70vh;
             display: flex;
             align-items: center;
             position: relative;
@@ -220,7 +300,7 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             margin-bottom: 20px;
             line-height: 1.2;
         }
@@ -238,9 +318,13 @@
         /* Sobre Section */
         .sobre-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1fr;
+            gap: 30px;
             align-items: center;
+        }
+
+        .sobre-text {
+            text-align: justify;
         }
 
         .sobre-text h3 {
@@ -265,18 +349,6 @@
             font-size: 1.2rem;
             color: var(--primary-color);
             margin-bottom: 10px;
-        }
-
-        .sobre-image {
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .sobre-image img {
-            width: 100%;
-            height: auto;
-            display: block;
         }
 
         /* Produtos Section */
@@ -527,7 +599,7 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: var(--ancient-color);
+            background-color: var(--light-color);
             border-radius: 50%;
             transition: var(--transition);
         }
@@ -662,7 +734,7 @@
             margin: 20px 0;
         }
 
-        /* Modal moderno para produto - PROPORÇÃO 9:4 FUNCIONAL */
+        /* Modal moderno para produto */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -842,7 +914,7 @@
             }
 
             .section {
-                padding: 60px 0;
+                padding: 50px 0;
             }
 
             .section-title h2 {
@@ -875,6 +947,10 @@
                 height: 70vh;
                 width: 95%;
             }
+
+            .splash-message {
+                font-size: 1.8rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -901,10 +977,34 @@
             .modal-overlay {
                 padding: 0;
             }
+
+            .splash-message {
+                font-size: 1.5rem;
+            }
+
+            .splash-logo img {
+                height: 60px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <img id="splash-logo-img" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjUwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMjUwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIyNTAiIGhlaWdodD0iODAiIGZpbGw9IiNmZmZmZmYiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzFhMzY1ZCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCI+TG9nbyBFbXByZXNhPC90ZXh0Pjwvc3ZnPg==" alt="Logo">
+            </div>
+            <div class="splash-message">
+                Preparando Novidades, Aguarde...
+            </div>
+            <div class="splash-loading">
+                <div class="splash-spinner"></div>
+                <div class="splash-text">Carregando experiência completa</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -964,11 +1064,6 @@
                             <h4>Valores</h4>
                             <p id="sobre-valores">Carregando valores...</p>
                         </div>
-                    </div>
-                </div>
-                <div class="sobre-image">
-                    <div style="width:100%;height:400px;background:var(--light-color);display:flex;align-items:center;justify-content:center;color:var(--text-color);border-radius:8px;">
-                        <i class="fas fa-building" style="font-size:3rem;"></i>
                     </div>
                 </div>
             </div>
@@ -1177,6 +1272,9 @@
         let imagens = {};
 
         document.addEventListener('DOMContentLoaded', function() {
+            // Iniciar o carregamento dos dados
+            carregarDadosSite();
+            
             // Configurações iniciais
             const currentYear = new Date().getFullYear();
             document.getElementById('current-year').textContent = currentYear;
@@ -1200,9 +1298,6 @@
                 });
             });
             
-            // Carregar dados
-            carregarDadosSite();
-            
             // Formulário de contato
             document.getElementById('form-contato').addEventListener('submit', enviarFormulario);
             
@@ -1218,18 +1313,15 @@
                     fecharModalProduto();
                 }
             });
-
-            // Verificar se há produto pré-selecionado na URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const produtoSelecionado = urlParams.get('produto');
-            if (produtoSelecionado && window.location.hash === '#contato') {
-                document.getElementById('mensagem').value = `Gostaria de obter mais informações sobre: ${decodeURIComponent(produtoSelecionado)}`;
-            }
         });
 
         async function carregarDadosSite() {
             try {
                 console.log('Iniciando carregamento de dados...');
+                
+                // Simular um tempo mínimo de exibição da splash (melhor UX)
+                const startTime = Date.now();
+                const minDisplayTime = 2000; // 2 segundos mínimo
                 
                 const response = await fetch(`${SCRIPT_URL}?action=getSiteData`);
                 
@@ -1241,15 +1333,42 @@
                 console.log('Dados recebidos:', data);
                 
                 if (data.status === 'success') {
-                    preencherDadosSite(data);
+                    // Calcular tempo restante para completar 2 segundos
+                    const elapsedTime = Date.now() - startTime;
+                    const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
+                    
+                    setTimeout(() => {
+                        preencherDadosSite(data);
+                        esconderSplash();
+                    }, remainingTime);
+                    
                 } else {
                     throw new Error(data.message || 'Erro desconhecido');
                 }
                 
             } catch (error) {
                 console.error('Erro ao carregar dados:', error);
-                exibirErro('Erro ao carregar dados do site: ' + error.message);
-                exibirDadosFallback();
+                
+                // Mesmo com erro, esconder a splash após um tempo
+                setTimeout(() => {
+                    exibirErro('Erro ao carregar dados do site: ' + error.message);
+                    exibirDadosFallback();
+                    esconderSplash();
+                }, 2000);
+            }
+        }
+
+        function esconderSplash() {
+            const splash = document.getElementById('splash-screen');
+            if (splash) {
+                splash.classList.add('hidden');
+                
+                // Remover completamente do DOM após a animação
+                setTimeout(() => {
+                    splash.remove();
+                    // Restaurar scroll do body
+                    document.body.style.overflow = '';
+                }, 800);
             }
         }
 
@@ -1259,6 +1378,11 @@
             // Armazenar dados globalmente
             todosProdutos = produtos || [];
             imagens = imagensData || {};
+            
+            // Atualizar logo na splash se disponível
+            if (imagens && config.logoBase64 && imagens[config.logoBase64]) {
+                document.getElementById('splash-logo-img').src = imagens[config.logoBase64];
+            }
             
             // Preencher configurações
             if (config.nomeEmpresa) {
@@ -1275,7 +1399,7 @@
                 document.getElementById('hero-subtitulo').textContent = config.heroSubtitulo;
             }
             
-            // Logo
+            // Logo do header
             if (imagens && config.logoBase64 && imagens[config.logoBase64]) {
                 document.getElementById('logo-img').src = imagens[config.logoBase64];
             }
@@ -1328,7 +1452,7 @@
             // Links sociais
             preencherLinksSociais(config);
             
-            // Esconder loadings
+            // Esconder loadings internos
             document.querySelectorAll('.loading').forEach(loading => {
                 loading.style.display = 'none';
             });
@@ -1628,7 +1752,7 @@
             });
         }
 
-        // FUNÇÕES DO MODAL DE PRODUTO - CORRETAS
+        // FUNÇÕES DO MODAL DE PRODUTO
         function abrirModalProduto(produtoId) {
             const produto = todosProdutos.find(p => 
                 (p.ID && p.ID.toString() === produtoId.toString()) || 

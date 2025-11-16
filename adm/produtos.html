@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos | Concretta Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🏗️ Produtos</h1>
+      <div class="user-info">
+        <span id="usuarioLogado"></span>
+        <button class="btn btn-outline" onclick="logout()">Sair</button>
+      </div>
+    </div>
+
+    <nav class="nav-tabs">
+      <a href="config.html" class="nav-tab">Configurações</a>
+      <a href="produtos.html" class="nav-tab active">Produtos</a>
+      <a href="depoimentos.html" class="nav-tab">Depoimentos</a>
+      <a href="about.html" class="nav-tab">Sobre</a>
+    </nav>
+
+    <div class="produtos-frame">
+      <h2>Gerenciamento de Produtos</h2>
+
+      <div class="produtos-toolbar">
+        <div class="filters">
+          <input id="filtroNome" class="form-control" placeholder="Nome">
+          <input id="filtroCategoria" class="form-control" placeholder="Categoria">
+          <select id="filtroDestaque" class="form-control">
+            <option value="">Destaque?</option>
+            <option value="Sim">Sim</option>
+            <option value="Não">Não</option>
+          </select>
+          <button class="btn btn-outline btn-sm" onclick="aplicarFiltros()">Filtrar</button>
+          <button class="btn btn-outline btn-sm" onclick="limparFiltros()">Limpar</button>
+        </div>
+        <button class="btn btn-primary" onclick="abrirModalProduto('novo')">+ Novo Produto</button>
+      </div>
+
+      <table class="tbl-list" id="tblProdutos">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Categoria</th>
+            <th>Preço</th>
+            <th>Destaque</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="produtosBody">
+          <tr><td colspan="7" class="text-muted" style="text-align:center;">Carregando...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modalProduto" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Novo Produto</h3>
+        <span class="close" onclick="fecharModal()">×</span>
+      </div>
+      <div class="modal-body">
+        <form id="formProduto">
+          <div class="form-group">
+            <label>ID (automático)</label>
+            <input id="produtoId" class="form-control" disabled>
+          </div>
+          <div class="form-group">
+            <label>Nome</label>
+            <input id="produtoNome" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label>Descrição</label>
+            <textarea id="produtoDescricao" class="form-control" rows="2"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Categoria</label>
+              <input id="produtoCategoria" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Preço</label>
+              <input id="produtoPreco" class="form-control" placeholder="R$ 0,00">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Destaque</label>
+            <select id="produtoDestaque" class="form-control">
+              <option>Não</option>
+              <option>Sim</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Imagens do Produto</label>
+            <div id="imagensGrid" class="image-thumbnails"></div>
+            <div id="dropZone" class="drop-zone">Arraste imagens ou clique para enviar</div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" onclick="fecharModal()">Cancelar</button>
+        <button class="btn btn-primary" onclick="salvarProduto()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/imgBase64pre.js"></script>
+  <script src="js/produtos.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurações | Concretta Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>⚙️ Configurações</h1>
+      <div class="user-info">
+        <span id="usuarioLogado"></span>
+        <button class="btn btn-outline" onclick="logout()">Sair</button>
+      </div>
+    </div>
+
+    <nav class="nav-tabs">
+      <a href="config.html" class="nav-tab active">Configurações</a>
+      <a href="produtos.html" class="nav-tab">Produtos</a>
+      <a href="depoimentos.html" class="nav-tab">Depoimentos</a>
+      <a href="about.html" class="nav-tab">Sobre</a>
+    </nav>
+
+    <section class="config-section">
+      <h3>Informações da Empresa</h3>
+      <div class="form-group">
+        <label>Nome</label>
+        <input id="empresaNome" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input id="empresaEmail" type="email" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Telefone</label>
+        <input id="empresaTelefone" class="form-control">
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="salvarConfiguracoes()">Salvar</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/config.js"></script>
+</body>
+</html>
+

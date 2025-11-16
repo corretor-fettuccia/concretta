@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre | Concretta Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🏢 Sobre a Empresa</h1>
+      <div class="user-info">
+        <span id="usuarioLogado"></span>
+        <button class="btn btn-outline" onclick="logout()">Sair</button>
+      </div>
+    </div>
+
+    <nav class="nav-tabs">
+      <a href="config.html" class="nav-tab">Configurações</a>
+      <a href="produtos.html" class="nav-tab">Produtos</a>
+      <a href="depoimentos.html" class="nav-tab">Depoimentos</a>
+      <a href="about.html" class="nav-tab active">Sobre</a>
+    </nav>
+
+    <section class="about-section">
+      <h3>Missão</h3>
+      <textarea id="sobreMissao" class="form-control" rows="3"></textarea>
+
+      <h3>Visão</h3>
+      <textarea id="sobreVisao" class="form-control" rows="3"></textarea>
+
+      <h3>Valores</h3>
+      <textarea id="sobreValores" class="form-control" rows="3"></textarea>
+
+      <div class="actions">
+        <button class="btn btn-primary" onclick="salvarSobre()">Salvar</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/about.js"></script>
+</body>
+</html>
+

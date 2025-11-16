@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Depoimentos | Concretta Admin</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>💬 Depoimentos</h1>
+      <div class="user-info">
+        <span id="usuarioLogado"></span>
+        <button class="btn btn-outline" onclick="logout()">Sair</button>
+      </div>
+    </div>
+
+    <nav class="nav-tabs">
+      <a href="config.html" class="nav-tab">Configurações</a>
+      <a href="produtos.html" class="nav-tab">Produtos</a>
+      <a href="depoimentos.html" class="nav-tab active">Depoimentos</a>
+      <a href="about.html" class="nav-tab">Sobre</a>
+    </nav>
+
+    <section class="testimonials-grid">
+      <div class="loading">Carregando depoimentos...</div>
+    </section>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/depoimentos.js"></script>
+</body>
+</html>
+
